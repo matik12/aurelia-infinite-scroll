@@ -54,7 +54,7 @@ getData() {
 There is the default **scroll buffer** of 50px used to call attribute expression before window reaches the real bottom of container to make loading elements smooth and sexy. You can also use **isActive** binding to switch off/on this plugin.
 ```js
 <template>
-    <div class="some-container" infinite-scroll="callback.call: getData(); scrollBuffer: 50; isActive: true ">
+    <div class="some-container" infinite-scroll="callback.call: getData(); scroll-buffer: 250; is-active: true">
     </div>
 </template>
 ```

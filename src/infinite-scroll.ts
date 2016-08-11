@@ -28,11 +28,11 @@ export class InfiniteScrollCustomAttribute {
     }
 
     scrollBufferChanged(buffer: number) {
-        this.scrollBuffer = buffer;
+        this.scrollBuffer = +buffer;
     }
 
-    isActiveChanged(isActive: boolean) {
-        this.isActive = isActive;
+    isActiveChanged(isActive: string) {
+        this.isActive = (isActive === 'true');
     }
 
     private onScrollChange = () => {
