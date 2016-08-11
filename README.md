@@ -39,7 +39,7 @@ export function configure(aurelia: Aurelia) {
 Then you can use custom attribute 'infinite-scroll' anywhere in the code like this for example:
 ```js
 <template>
-    <div class="some-container" infinite-scroll.call="getData()">
+    <div class="some-container" infinite-scroll="callback.call: getData()">
     </div>
 </template>
 ```
@@ -51,8 +51,15 @@ getData() {
 }
 ```
 
-There is scroll buffer of 50px used to call attribute expression before window reaches the real bottom of container to make loading elements smooth and sexy.
-Notice: you can use only one container with this custom attribute per particular page html due to window scroll, which is global.
+There is the default **scroll buffer** of 50px used to call attribute expression before window reaches the real bottom of container to make loading elements smooth and sexy. You can also use **isActive** binding to switch off/on this plugin.
+```js
+<template>
+    <div class="some-container" infinite-scroll="callback.call: getData(); scrollBuffer: 50; isActive: true ">
+    </div>
+</template>
+```
+
+Notice: you can use **only one** container with this custom attribute per particular page html due to window scroll, which is global.
 
 ## Browser support
 

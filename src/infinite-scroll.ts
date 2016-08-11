@@ -1,12 +1,14 @@
-import { autoinject } from 'aurelia-framework';
+import { autoinject, bindable } from 'aurelia-framework';
 
 @autoinject()
 export class InfiniteScrollCustomAttribute {
-    private callback: Function;
     private isTicking: boolean = false;
 
+    @bindable callback: Function;
+    @bindable scrollBuffer: number = 50;
+    @bindable isActive: boolean = true;
+
     public static ScrollEventName: string = 'scroll';
-    public static MinimumScrollBuffer: number = 50;
 
     constructor(private element: Element) {
         this.element = element;
@@ -21,11 +23,23 @@ export class InfiniteScrollCustomAttribute {
         window.removeEventListener(InfiniteScrollCustomAttribute.ScrollEventName, this.onScrollChange);
     }
 
-    valueChanged(newCallback: Function) {
+    callbackChanged(newCallback: Function) {
         this.callback = newCallback;
     }
 
+    scrollBufferChanged(buffer: number) {
+        this.scrollBuffer = buffer;
+    }
+
+    isActiveChanged(isActive: boolean) {
+        this.isActive = isActive;
+    }
+
     private onScrollChange = () => {
+        if (!this.isActive) {
+            return false;
+        }
+
         if (!this.isTicking) {
             window.requestAnimationFrame(() => {
                 this.checkScrollPosition();
@@ -40,8 +54,7 @@ export class InfiniteScrollCustomAttribute {
         const elementHeight = this.element.scrollHeight;
         const elementOffsetTop = (<any>this.element).offsetTop;
         const windowScrollPosition = window.innerHeight + window.pageYOffset;
-        const isPageScrolledToElementBottom = (windowScrollPosition + InfiniteScrollCustomAttribute.MinimumScrollBuffer) >= 
-            (elementHeight + elementOffsetTop);
+        const isPageScrolledToElementBottom = (windowScrollPosition + this.scrollBuffer) >= (elementHeight + elementOffsetTop);
 
         if (this.callback && isPageScrolledToElementBottom) {
             this.callback();
