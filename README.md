@@ -1,5 +1,9 @@
+[**Contributors needed**: I'm looking for people that are willing to help me maintain and improve this plugin.](https://github.com/matik12/aurelia-infinite-scroll/issues/1)
+
+---
 
 #### NPM package [aurelia-infinite-scroll](https://www.npmjs.com/package/aurelia-infinite-scroll)
+#### Users page with loading sample data -> [Live demo](https://matik12.github.io/aurelia-basic-app-skeleton/)
 
 ## What is aurelia-infinite-scroll plugin?
 aurelia-infinite-scroll is a plugin for [Aurelia](http://aurelia.io/) that adds feature of infinite browser scroll i.e. Facebook loading. When the bottom of the custom attribute container(i.e. div) reaches the bottom of the browser window, the plugin should invoke custom expression - function and this usually adds more elements to container presenting nice infinite loading. This feature is also great loading list elements on mobile devices using standard touch-pad scrolling.
@@ -24,8 +28,6 @@ npm install aurelia-infinite-scroll --save
 
 In your Aurelia configuration file(most commonly main file) add the plugin :
 ```js
-import 'aurelia-infinite-scroll';
-
 export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
