@@ -31,10 +31,6 @@ export class InfiniteScrollCustomAttribute {
         this.scrollBuffer = +buffer;
     }
 
-    isActiveChanged(isActive: string) {
-        this.isActive = (isActive === 'true');
-    }
-
     private onScrollChange = () => {
         if (!this.isActive) {
             return false;
@@ -50,7 +46,7 @@ export class InfiniteScrollCustomAttribute {
         this.isTicking = true;
     }
 
-    private checkScrollPosition() {        
+    private checkScrollPosition() {
         const elementHeight = this.element.scrollHeight;
         const elementOffsetTop = (<any>this.element).offsetTop;
         const windowScrollPosition = window.innerHeight + window.pageYOffset;
