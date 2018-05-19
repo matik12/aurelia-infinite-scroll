@@ -21,7 +21,6 @@
     "url": "https://github.com/matik12/aurelia-infinite-scroll.git"
   },
   "scripts": {
-    "postinstall": "./node_modules/.bin/typings install"
   },
   "jspm": {
     "registry": "npm",
